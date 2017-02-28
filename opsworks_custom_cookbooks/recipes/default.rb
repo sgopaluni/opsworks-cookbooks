@@ -10,8 +10,6 @@ ruby_block "load and execute the new cookbooks" do
       # add new Cookbooks and keep old
       Chef::Config.cookbook_path = [Chef::Config.cookbook_path, node[:opsworks_custom_cookbooks][:destination]].flatten
 
-      load_new_cookbooks
-
       node[:opsworks_custom_cookbooks][:recipes].each do |r|
         begin
           Chef::Log.info("Executing custom recipe: #{r}")
